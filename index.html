@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matalan Label Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- HTML2PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="bg-decoration"></div>
+
+    <div class="app-container">
+        <!-- Top Navigation -->
+        <nav class="navbar">
+            <div class="logo-section">
+                <img src="assets/allport-pacd-logo.png" alt="Allport PACD Logo" class="logo-img">
+                <h1>Matalan Label Generator</h1>
+            </div>
+            <button id="instructionBtn" class="nav-icon-btn" title="Instructions">
+                <i data-lucide="info"></i>
+                <span>Help</span>
+            </button>
+        </nav>
+
+        <div class="main-content">
+            <!-- Sidebar Controls -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2>Configuration</h2>
+                    <p>Enter label details below</p>
+                </div>
+
+                <form id="labelForm">
+                    <div class="form-section">
+                        <label class="section-label">Dimensions</label>
+                        <div class="form-group">
+                            <select id="sizeSelector" class="custom-select">
+                                <option value="a5">A5</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-divider"></div>
+
+                    <div class="form-section">
+                        <label class="section-label">Order Details</label>
+                        <div class="input-grid">
+                            <div class="form-group floating-group">
+                                <input type="text" id="poNumber" value="" placeholder=" ">
+                                <label for="poNumber">PO Number</label>
+                            </div>
+                            <div class="form-group floating-group">
+                                <input type="text" id="styleRef" value="" placeholder=" ">
+                                <label for="styleRef">Style Ref</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group floating-group">
+                        <textarea id="supplierName" rows="2" placeholder=" "></textarea>
+                        <label for="supplierName">Supplier Name</label>
+                    </div>
+
+                    <div class="form-group floating-group">
+                        <input type="text" id="factoryName" value="" placeholder=" ">
+                        <label for="factoryName">Factory Name</label>
+                    </div>
+
+                    <div class="input-grid">
+                        <div class="form-group floating-group">
+                            <input type="text" id="lineCode" value="" placeholder=" ">
+                            <label for="lineCode">Line Code</label>
+                        </div>
+                        <div class="form-group floating-group">
+                            <input type="text" id="packId" value="" placeholder=" ">
+                            <label for="packId">Pack ID</label>
+                        </div>
+                    </div>
+
+                    <div class="input-grid">
+                        <div class="form-group floating-group">
+                            <input type="text" id="boxQty" value="" placeholder=" ">
+                            <label for="boxQty">Box Qty</label>
+                        </div>
+                        <div class="form-group">
+                            <select id="division" class="custom-select">
+                                <option value="L - LADIES">L - LADIES</option>
+                                <option value="B - BOYS">B - BOYS</option>
+                                <option value="C - INFANTS">C - INFANTS</option>
+                                <option value="M - MENS">M - MENS</option>
+                                <option value="H - Homeware">H - Homeware</option>
+                                <option value="G - Girls">G - Girls</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="section-label" style="margin-bottom: 0.5rem; display: block;">Carton Type</label>
+                        <select id="cartonType" class="custom-select">
+                            <option value="ratio">Ratio (Multiple Sizes)</option>
+                            <option value="single">Single Size</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group floating-group">
+                        <input type="text" id="color" value="" placeholder=" ">
+                        <label for="color">Color</label>
+                    </div>
+
+                    <div class="form-group floating-group">
+                        <textarea id="description" rows="2" placeholder=" "></textarea>
+                        <label for="description">Product Description</label>
+                    </div>
+
+                    <div class="form-divider"></div>
+
+                    <div class="form-section">
+                        <label class="section-label">Size Breakdown</label>
+                        <div class="size-inputs-grid">
+                            <div class="form-group floating-group mini">
+                                <input type="number" id="sizeXS" min="0" placeholder=" ">
+                                <label>XS</label>
+                            </div>
+                            <div class="form-group floating-group mini">
+                                <input type="number" id="sizeS" min="0" placeholder=" ">
+                                <label>S</label>
+                            </div>
+                            <div class="form-group floating-group mini">
+                                <input type="number" id="sizeM" min="0" placeholder=" ">
+                                <label>M</label>
+                            </div>
+                            <div class="form-group floating-group mini">
+                                <input type="number" id="sizeL" min="0" placeholder=" ">
+                                <label>L</label>
+                            </div>
+                            <div class="form-group floating-group mini">
+                                <input type="number" id="sizeXL" min="0" placeholder=" ">
+                                <label>XL</label>
+                            </div>
+                            <div class="form-group floating-group mini">
+                                <input type="number" id="sizeXXL" min="0" placeholder=" ">
+                                <label>XXL</label>
+                            </div>
+                            <div class="form-group floating-group mini">
+                                <input type="number" id="sizeXXXL" min="0" placeholder=" ">
+                                <label>3XL</label>
+                            </div>
+                        </div>
+
+                        <!-- Single Size Input (Hidden by default) -->
+                        <div id="singleSizeContainer" class="form-group floating-group hidden">
+                            <input type="text" id="singleSizeValue" value="" placeholder=" ">
+                            <label for="singleSizeValue">Size Value</label>
+                        </div>
+                    </div>
+                </form>
+
+            </aside>
+
+            <!-- Preview Area -->
+            <main class="preview-stage">
+                <div class="toolbar-floating">
+                    <div class="toolbar-left">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Live Preview</span>
+                    </div>
+                    <div class="zoom-controls">
+                        <button id="zoomOut"><i data-lucide="minus"></i></button>
+                        <span>100%</span>
+                        <button id="zoomIn"><i data-lucide="plus"></i></button>
+                    </div>
+                    <button type="button" id="downloadBtn" class="primary-btn">
+                        <i data-lucide="download"></i> <span>Export PDF</span>
+                    </button>
+                </div>
+
+                <div class="canvas-wrapper">
+                    <!-- This div represents the A4 Page -->
+                    <div id="printArea" class="a4-page">
+                        <!-- Labels will be injected here via JS -->
+                        <div class="label-container" id="label1"></div>
+                        <div class="label-container" id="label2"></div>
+                    </div>
+                </div>
+            </main>
+
+            </main>
+        </div>
+        <footer class="app-footer">
+            <p>&copy; 2026 PACD. All rights reserved. <span class="separator">|</span> Developed by <a
+                    href="https://ev1shoaib.netlify.app" target="_blank" class="dev-link">EV1</a></p>
+        </footer>
+    </div>
+
+    <!-- Template for a single label -->
+    <template id="labelTemplate">
+        <div class="label-content">
+            <div class="row">
+                <span class="label-key">PO NUMBER</span>
+                <span class="label-value" data-key="poNumber"></span>
+            </div>
+            <div class="row">
+                <span class="label-key">STYLE REF</span>
+                <span class="label-value" data-key="styleRef"></span>
+            </div>
+            <div class="row">
+                <span class="label-key">SUPPLIER NAME</span>
+                <span class="label-value" data-key="supplierName"></span>
+            </div>
+            <div class="row">
+                <span class="label-key">FACTORY NAME</span>
+                <span class="label-value" data-key="factoryName"></span>
+            </div>
+            <div class="row">
+                <span class="label-key">LINE CODE NUMBER</span>
+                <span class="label-value" data-key="lineCode"></span>
+            </div>
+            <div class="row">
+                <span class="label-key">PACK ID</span>
+                <span class="label-value" data-key="packId"></span>
+            </div>
+            <div class="row">
+                <span class="label-key">BOX QUANTITY</span>
+                <span class="label-value" data-key="boxQty"></span>
+            </div>
+            <div class="row">
+                <span class="label-key">COLOR</span>
+                <span class="label-value" data-key="color"></span>
+            </div>
+            <div class="row">
+                <span class="label-key">PRODUCT DESCRIPTION</span>
+                <span class="label-value" data-key="description"></span>
+            </div>
+
+            <div class="row size-row">
+                <span class="label-key">SIZE</span>
+
+                <!-- Ratio Table View -->
+                <div class="size-table-container" data-key="sizeTableContainer">
+                    <table class="size-table">
+                        <thead>
+                            <tr>
+                                <th>XS</th>
+                                <th>S</th>
+                                <th>M</th>
+                                <th>L</th>
+                                <th>XL</th>
+                                <th>XXL</th>
+                                <th>XXXL</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-key="sizeXS">-</td>
+                                <td data-key="sizeS">-</td>
+                                <td data-key="sizeM">-</td>
+                                <td data-key="sizeL">-</td>
+                                <td data-key="sizeXL">-</td>
+                                <td data-key="sizeXXL">-</td>
+                                <td data-key="sizeXXXL">-</td>
+                                <td data-key="sizeTotal" class="total-cell">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Single Value View -->
+                <span class="label-value hidden" data-key="singleSizeDisplay"></span>
+            </div>
+
+            <!-- Corner Box Logic -->
+            <div class="corner-box hidden" data-key="cornerBox"></div>
+        </div>
+    </template>
+
+    <!-- Instruction Modal -->
+    <div id="instructionModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Instructions</h2>
+                <button class="close-modal"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/instructions.png" alt="Label Instructions" class="instruction-img">
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
