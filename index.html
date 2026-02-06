@@ -128,33 +128,33 @@
                     <div class="form-section">
                         <label class="section-label">Size Breakdown</label>
                         <div class="size-inputs-grid">
-                            <div class="form-group floating-group mini">
-                                <input type="number" id="sizeXS" min="0" placeholder=" ">
-                                <label>XS</label>
+                            <div class="size-pair">
+                                <input type="text" id="labelXS" class="size-header-input" value="XS">
+                                <input type="number" id="sizeXS" class="size-qty-input" min="0" placeholder="0">
                             </div>
-                            <div class="form-group floating-group mini">
-                                <input type="number" id="sizeS" min="0" placeholder=" ">
-                                <label>S</label>
+                            <div class="size-pair">
+                                <input type="text" id="labelS" class="size-header-input" value="S">
+                                <input type="number" id="sizeS" class="size-qty-input" min="0" placeholder="0">
                             </div>
-                            <div class="form-group floating-group mini">
-                                <input type="number" id="sizeM" min="0" placeholder=" ">
-                                <label>M</label>
+                            <div class="size-pair">
+                                <input type="text" id="labelM" class="size-header-input" value="M">
+                                <input type="number" id="sizeM" class="size-qty-input" min="0" placeholder="0">
                             </div>
-                            <div class="form-group floating-group mini">
-                                <input type="number" id="sizeL" min="0" placeholder=" ">
-                                <label>L</label>
+                            <div class="size-pair">
+                                <input type="text" id="labelL" class="size-header-input" value="L">
+                                <input type="number" id="sizeL" class="size-qty-input" min="0" placeholder="0">
                             </div>
-                            <div class="form-group floating-group mini">
-                                <input type="number" id="sizeXL" min="0" placeholder=" ">
-                                <label>XL</label>
+                            <div class="size-pair">
+                                <input type="text" id="labelXL" class="size-header-input" value="XL">
+                                <input type="number" id="sizeXL" class="size-qty-input" min="0" placeholder="0">
                             </div>
-                            <div class="form-group floating-group mini">
-                                <input type="number" id="sizeXXL" min="0" placeholder=" ">
-                                <label>XXL</label>
+                            <div class="size-pair">
+                                <input type="text" id="labelXXL" class="size-header-input" value="XXL">
+                                <input type="number" id="sizeXXL" class="size-qty-input" min="0" placeholder="0">
                             </div>
-                            <div class="form-group floating-group mini">
-                                <input type="number" id="sizeXXXL" min="0" placeholder=" ">
-                                <label>3XL</label>
+                            <div class="size-pair">
+                                <input type="text" id="labelXXXL" class="size-header-input" value="3XL">
+                                <input type="number" id="sizeXXXL" class="size-qty-input" min="0" placeholder="0">
                             </div>
                         </div>
 
@@ -251,13 +251,13 @@
                     <table class="size-table">
                         <thead>
                             <tr>
-                                <th>XS</th>
-                                <th>S</th>
-                                <th>M</th>
-                                <th>L</th>
-                                <th>XL</th>
-                                <th>XXL</th>
-                                <th>XXXL</th>
+                                <th data-key="headerXS">XS</th>
+                                <th data-key="headerS">S</th>
+                                <th data-key="headerM">M</th>
+                                <th data-key="headerL">L</th>
+                                <th data-key="headerXL">XL</th>
+                                <th data-key="headerXXL">XXL</th>
+                                <th data-key="headerXXXL">3XL</th>
                                 <th>Total</th>
                             </tr>
                         </thead>

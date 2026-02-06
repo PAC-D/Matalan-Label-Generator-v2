@@ -97,20 +97,33 @@ document.addEventListener('DOMContentLoaded', () => {
             singleSizeValue: document.getElementById('singleSizeValue') ? document.getElementById('singleSizeValue').value : '',
         };
 
-        // Gather Sizes and Calculate Total
+        // Gather Active Sizes and Calculate Total
         const sizeKeys = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+        const activeSizes = [];
         let totalSize = 0;
         let hasSize = false;
 
         sizeKeys.forEach(key => {
-            const val = document.getElementById(`size${key}`).value;
-            data[`size${key}`] = val !== '' ? val : '-';
+            // value
+            const valInput = document.getElementById(`size${key}`);
+            const labelInput = document.getElementById(`label${key}`);
+
+            const val = valInput ? valInput.value : '';
+            const header = (labelInput && labelInput.value) ? labelInput.value : key;
+
+            // Include if quantity is NOT empty
             if (val !== '') {
+                activeSizes.push({ header: header, value: val });
                 totalSize += (parseInt(val) || 0);
                 hasSize = true;
             }
+
+            // Still populate legacy data keys just in case, though usually unused with dynamic render
+            data[`size${key}`] = val !== '' ? val : '-';
+            data[`header${key}`] = header;
         });
 
+        data.activeSizes = activeSizes;
         data.sizeTotal = hasSize ? totalSize : '-';
 
         // Render both labels
@@ -122,10 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = '';
         const clone = template.content.cloneNode(true);
 
-        // Populate fields
+        // Populate basic fields
         Object.keys(data).forEach(key => {
             const el = clone.querySelector(`[data-key="${key}"]`);
-            /* Skip internal logic keys if they don't have a matching element */
             if (el && key !== 'cornerBox' && key !== 'division' && key !== 'singleSizeDisplay' && key !== 'sizeTableContainer') el.textContent = data[key];
         });
 
@@ -143,6 +155,46 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ratio Mode
             if (sizeTableContainer) sizeTableContainer.classList.remove('hidden');
             if (singleSizeDisplay) singleSizeDisplay.classList.add('hidden');
+
+            // Dynamic Table Render
+            const tableHead = clone.querySelector('.size-table thead tr');
+            const tableBody = clone.querySelector('.size-table tbody tr');
+
+            if (tableHead && tableBody && data.activeSizes) {
+                tableHead.innerHTML = '';
+                tableBody.innerHTML = '';
+
+                if (data.activeSizes.length > 0) {
+                    data.activeSizes.forEach(size => {
+                        const th = document.createElement('th');
+                        th.textContent = size.header;
+                        tableHead.appendChild(th);
+
+                        const td = document.createElement('td');
+                        td.textContent = size.value;
+                        tableBody.appendChild(td);
+                    });
+
+                    // Add Total Column
+                    const thTot = document.createElement('th');
+                    thTot.textContent = 'Total';
+                    tableHead.appendChild(thTot);
+
+                    const tdTot = document.createElement('td');
+                    tdTot.textContent = data.sizeTotal;
+                    tdTot.classList.add('total-cell');
+                    tableBody.appendChild(tdTot);
+                } else {
+                    // Placeholder if no sizes active
+                    const th = document.createElement('th');
+                    th.textContent = 'Size';
+                    tableHead.appendChild(th);
+
+                    const td = document.createElement('td');
+                    td.textContent = '-';
+                    tableBody.appendChild(td);
+                }
+            }
         }
 
         // Corner Box Logic
