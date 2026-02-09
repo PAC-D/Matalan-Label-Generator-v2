@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matalan Label Generator - Official Instruction Manual</title>
+    <title>Matalan Shipping Label Generator - Official Instruction Manual</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -30,7 +30,8 @@
             font-family: 'Inter', sans-serif;
             background-color: #e2e8f0;
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.4;
+            /* Reduced from 1.6 */
             padding: 2rem;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
@@ -120,7 +121,8 @@
             background: white;
             margin: 0 auto 2rem auto;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            padding: 15mm 20mm;
+            padding: 10mm 15mm;
+            /* Reduced padding */
             position: relative;
             overflow: hidden;
         }
@@ -129,8 +131,10 @@
         .manual-header {
             background: var(--primary);
             color: white;
-            padding: 1.5rem 2rem;
-            margin: -15mm -20mm 1.5rem -20mm;
+            padding: 1rem 1.5rem;
+            /* Reduced padding */
+            margin: -10mm -15mm 1rem -15mm;
+            /* Adjusted margins */
             position: relative;
         }
 
@@ -141,73 +145,86 @@
         }
 
         .header-text h1 {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+            /* Reduced font size */
             font-weight: 800;
-            margin-bottom: 0.1rem;
+            margin-bottom: 0;
         }
 
         .header-text p {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
+            /* Reduced font size */
             color: #ffffff;
             opacity: 1;
         }
 
         .header-logo img {
-            height: 40px;
+            height: 32px;
+            /* Reduced logo size */
         }
 
         /* Section Styling */
         .section {
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.8rem;
+            /* Reduced margin */
         }
 
         .section-number {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            /* Reduced size */
+            height: 20px;
+            /* Reduced size */
             background: var(--primary);
             color: white;
             border-radius: 50%;
             font-weight: 700;
-            font-size: 0.75rem;
-            margin-right: 0.5rem;
+            font-size: 0.65rem;
+            /* Reduced font size */
+            margin-right: 0.4rem;
         }
 
         .section-title {
             display: flex;
             align-items: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            /* Reduced font size */
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.35rem;
+            margin-bottom: 0.5rem;
+            /* Reduced margin */
+            padding-bottom: 0.2rem;
             border-bottom: 2px solid var(--border);
         }
 
         h3 {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            /* Reduced font size */
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 0.5rem;
-            margin-top: 0.75rem;
+            margin-bottom: 0.3rem;
+            margin-top: 0.5rem;
         }
 
         p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
+            /* Reduced margin */
             color: var(--text-main);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            /* Reduced font size */
         }
 
         ul {
             margin-left: 1.1rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         li {
-            margin-bottom: 0.3rem;
-            font-size: 0.75rem;
+            margin-bottom: 0.2rem;
+            font-size: 0.7rem;
+            /* Reduced font size */
         }
 
         li strong {
@@ -225,65 +242,76 @@
         .info-box {
             background: #eff6ff;
             border-left: 3px solid var(--primary);
-            padding: 0.5rem 0.75rem;
-            border-radius: 0 6px 6px 0;
-            margin: 0.75rem 0;
+            padding: 0.4rem 0.6rem;
+            /* Reduced padding */
+            border-radius: 0 4px 4px 0;
+            margin: 0.5rem 0;
+            /* Reduced margin */
         }
 
         .info-box p {
             color: var(--primary);
             margin-bottom: 0;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
+            /* Reduced font size */
         }
 
         .important-box {
             background: #fef3c7;
             border-left: 3px solid #f59e0b;
-            padding: 0.5rem 0.75rem;
-            border-radius: 0 6px 6px 0;
-            margin: 0.75rem 0;
+            padding: 0.4rem 0.6rem;
+            /* Reduced padding */
+            border-radius: 0 4px 4px 0;
+            margin: 0.5rem 0;
+            /* Reduced margin */
         }
 
         .important-box .box-title {
             font-weight: 700;
             color: #92400e;
-            margin-bottom: 0.2rem;
-            font-size: 0.75rem;
+            margin-bottom: 0.1rem;
+            font-size: 0.7rem;
+            /* Reduced font size */
         }
 
         .important-box p {
             color: #78350f;
             margin-bottom: 0;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
+            /* Reduced font size */
         }
 
         .size-decision-box {
             background: var(--bg-light);
             border: 2px solid var(--border);
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem 0;
+            border-radius: 6px;
+            padding: 0.6rem;
+            /* Reduced padding */
+            margin: 0.6rem 0;
+            /* Reduced margin */
         }
 
         .size-decision-title {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             text-align: center;
         }
 
         .size-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
+            gap: 0.6rem;
+            /* Reduced gap */
         }
 
         .size-option {
             background: white;
             border: 2px solid var(--border);
-            border-radius: 8px;
-            padding: 0.75rem;
+            border-radius: 6px;
+            padding: 0.5rem;
+            /* Reduced padding */
             text-align: center;
         }
 
@@ -297,11 +325,13 @@
 
         .size-option-label {
             display: inline-block;
-            padding: 0.25rem 0.7rem;
+            padding: 0.15rem 0.5rem;
+            /* Reduced padding */
             border-radius: 99px;
             font-weight: 700;
-            font-size: 0.8rem;
-            margin-bottom: 0.4rem;
+            font-size: 0.7rem;
+            /* Reduced font size */
+            margin-bottom: 0.3rem;
         }
 
         .size-option.custom .size-option-label {
@@ -315,14 +345,16 @@
         }
 
         .size-option-dimension {
-            font-size: 1.25rem;
+            font-size: 0.9rem;
+            /* Reduced font size */
             font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.1rem;
         }
 
         .size-option-condition {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            /* Reduced font size */
             color: var(--text-muted);
             font-weight: 500;
         }
@@ -332,9 +364,10 @@
         }
 
         .instructions-image-container {
-            margin: 0.75rem 0;
+            margin: 0.5rem 0;
+            /* Reduced margin */
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
             background: var(--bg-light);
         }
@@ -347,18 +380,23 @@
 
         .step {
             display: flex;
-            gap: 0.6rem;
-            margin-bottom: 0.6rem;
-            padding: 0.6rem;
+            gap: 0.5rem;
+            /* Reduced gap */
+            margin-bottom: 0.5rem;
+            /* Reduced margin */
+            padding: 0.5rem;
+            /* Reduced padding */
             background: var(--bg-light);
-            border-radius: 6px;
+            border-radius: 4px;
             border-left: 3px solid var(--primary);
         }
 
         .step-number {
             flex-shrink: 0;
-            width: 26px;
-            height: 26px;
+            width: 22px;
+            /* Reduced size */
+            height: 22px;
+            /* Reduced size */
             background: var(--primary);
             color: white;
             border-radius: 50%;
@@ -366,40 +404,50 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            /* Reduced font size */
         }
 
         .step-content h4 {
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 0.15rem;
-            font-size: 0.8rem;
+            margin-bottom: 0.1rem;
+            font-size: 0.75rem;
+            /* Reduced font size */
         }
 
         .step-content p {
             color: var(--text-muted);
             margin-bottom: 0;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            /* Reduced font size */
         }
 
         .specs-list {
             background: var(--bg-light);
             border-radius: 6px;
-            padding: 0.75rem 1rem;
-            margin: 0.5rem 0;
+            padding: 0.5rem 0.75rem;
+            /* Reduced padding */
+            margin: 0.4rem 0;
+            /* Reduced margin */
         }
 
         .specs-list li {
-            margin-bottom: 0.25rem;
-            font-size: 0.75rem;
+            margin-bottom: 0.15rem;
+            /* Reduced margin */
+            font-size: 0.7rem;
+            /* Reduced font size */
         }
 
         .page-footer {
             position: absolute;
-            bottom: 10mm;
-            left: 20mm;
-            right: 20mm;
-            padding-top: 0.75rem;
+            bottom: 8mm;
+            /* Reduced bottom position */
+            left: 15mm;
+            /* Adjusted left position */
+            right: 15mm;
+            /* Adjusted right position */
+            padding-top: 0.5rem;
             border-top: 1px solid var(--border);
             display: flex;
             align-items: center;
@@ -407,18 +455,21 @@
         }
 
         .footer-logo {
-            height: 24px;
+            height: 20px;
+            /* Reduced logo size */
         }
 
         .footer-text {
             color: var(--text-muted);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
+            /* Reduced font size */
             text-align: right;
         }
 
         .page-number {
             color: var(--text-muted);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            /* Reduced font size */
             font-weight: 600;
         }
     </style>
@@ -437,11 +488,12 @@
         <header class="manual-header">
             <div class="header-content">
                 <div class="header-text">
-                    <h1>Matalan Label Generator</h1>
+                    <h1>Matalan Shipping Label Generator</h1>
                     <p>Official Instruction Manual</p>
                 </div>
                 <div class="header-logo">
-                    <img src="assets/allport-pacd-logo.png" alt="Allport PACD Logo">
+                    <img src="assets/allport-pacd-logo.png" alt="Allport PACD Logo"
+                        style="background: white; padding: 5px; border-radius: 4px; height: 60px;">
                 </div>
             </div>
         </header>
@@ -452,18 +504,22 @@
                 Label Size Selection
             </h2>
             <p>Select the correct label size based on the <strong>carton height</strong>:</p>
+
             <div class="size-decision-box">
-                <h3 class="size-decision-title">📐 Choose Your Label Size</h3>
                 <div class="size-options">
-                    <div class="size-option custom">
-                        <span class="size-option-label">CUSTOM</span>
-                        <div class="size-option-dimension">25 × 10 cm</div>
-                        <p class="size-option-condition">Carton height<br><strong>10 cm – 15 cm</strong></p>
-                    </div>
                     <div class="size-option a5">
-                        <span class="size-option-label">A5</span>
-                        <div class="size-option-dimension">21 × 14.8 cm</div>
-                        <p class="size-option-condition"><strong>All other cartons</strong><br>(Height &gt; 15 cm)</p>
+                        <span class="size-option-label">A5 Standard</span>
+                        <div class="size-option-dimension">Height &gt; 15 cm</div>
+                        <img src="assets/A5.png" alt="A5 Label Example"
+                            style="width: 100%; border: 1px solid #e2e8f0; margin-top: 10px; border-radius: 4px;">
+                        <p class="size-option-condition" style="margin-top: 5px;">Standard layout for most cartons.</p>
+                    </div>
+                    <div class="size-option custom">
+                        <span class="size-option-label">Custom Wide</span>
+                        <div class="size-option-dimension">Height 10-15 cm</div>
+                        <img src="assets/CUSTOM.png" alt="Custom Label Example"
+                            style="width: 100%; border: 1px solid #e2e8f0; margin-top: 10px; border-radius: 4px;">
+                        <p class="size-option-condition" style="margin-top: 5px;">Wide layout for short cartons.</p>
                     </div>
                 </div>
             </div>
@@ -472,83 +528,73 @@
         <section class="section">
             <h2 class="section-title">
                 <span class="section-number">2</span>
-                Filling in the Label
+                Carton Type Options
             </h2>
-            <p>Please complete the required fields given to generate label. The necessary details can be obtained
-                from the <span class="highlight">Purchase Order</span> you have received.</p>
-            <p style="color: var(--text-muted); font-size: 0.75rem;">
-                <em>Tip: Click the <strong>Help</strong> button in the application for general instructions.</em>
-            </p>
-            <div class="instructions-image-container">
-                <img src="instruction.png" alt="Label Generator Screenshot" class="instructions-image">
+            <p>Choose how sizes are packed inside the carton:</p>
+
+            <div class="size-decision-box">
+                <div class="size-options">
+                    <div class="size-option" style="border-color: var(--primary);">
+                        <span class="size-option-label" style="background: var(--text-main); color: white;">SINGLE
+                            SIZE</span>
+                        <p class="size-option-condition">Carton contains only <strong>one size</strong>.</p>
+                        <img src="assets/SINGLE.png" alt="Single Size Example"
+                            style="width: 100%; border: 1px solid #e2e8f0; margin-top: 10px; border-radius: 4px;">
+                    </div>
+                    <div class="size-option" style="border-color: var(--primary);">
+                        <span class="size-option-label" style="background: var(--text-main); color: white;">RATIO
+                            (MIXED)</span>
+                        <p class="size-option-condition">Carton contains <strong>multiple sizes</strong>.</p>
+                        <!-- Using A5.png for Ratio as requested -->
+                        <img src="assets/A5.png" alt="Ratio Label Example"
+                            style="width: 100%; border: 1px solid #e2e8f0; margin-top: 10px; border-radius: 4px;">
+                        <p class="size-option-condition" style="margin-top: 5px; font-size: 0.65rem;">(Displays size
+                            table with quantities)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="info-box">
+                <ul style="margin: 0; padding-left: 1rem;">
+                    <li><strong>Single:</strong> Enter just the size value (e.g., "XL").</li>
+                    <li><strong>Ratio:</strong> Enter quantity for each size (XS-3XL).</li>
+                </ul>
             </div>
         </section>
 
         <div class="page-footer">
             <img src="assets/allport-pacd-logo.png" alt="Allport PACD" class="footer-logo">
-            <span class="page-number">Page 1 of 3</span>
+            <span class="page-number">Page 1 of 4</span>
             <div class="footer-text">Version 1.0 | January 2026</div>
         </div>
     </div>
 
     <!-- PAGE 2 -->
     <div class="a4-page" id="page2">
+        <!-- Section 3: Filling in the Label (Moved to Page 2) -->
         <section class="section">
             <h2 class="section-title">
                 <span class="section-number">3</span>
-                Carton Type Selection
+                Filling in the Label
             </h2>
-            <p>Select the appropriate carton type based on the contents:</p>
-            <div class="size-decision-box">
-                <h3 class="size-decision-title">📦 Choose Carton Type</h3>
-                <div class="size-options">
-                    <div class="size-option a5">
-                        <span class="size-option-label">RATIO</span>
-                        <div class="size-option-dimension">Multiple Sizes</div>
-                        <p class="size-option-condition">Carton contains <strong>mixed sizes</strong><br>e.g., S-M-L-XL
-                            with quantities</p>
-                    </div>
-                    <div class="size-option custom">
-                        <span class="size-option-label">SINGLE</span>
-                        <div class="size-option-dimension">One Size Only</div>
-                        <p class="size-option-condition">Carton contains <strong>one size</strong><br>e.g., just "L" or
-                            "XL"</p>
-                    </div>
-                </div>
-            </div>
-            <div class="info-box">
-                <p><strong>Ratio:</strong> Enter quantity for each size (XS, S, M, L, XL, XXL, 3XL). The total will be
-                    calculated automatically.</p>
-            </div>
-            <div class="info-box">
-                <p><strong>Single:</strong> Enter just the size value (e.g., "M", "L", "XL", "42", etc.).</p>
-            </div>
-        </section>
+            <p>Follow the guide below to complete the label details from your Purchase Order.</p>
 
-        <section class="section">
-            <h2 class="section-title">
-                <span class="section-number">4</span>
-                Important Notes
-            </h2>
-            <div class="info-box">
-                <p><strong>Carton gross weight (kg)</strong> will be measured after filling.</p>
+            <!-- Instructions Image -->
+            <h3 style="margin-top:0;">1. Mapping Source Data</h3>
+            <div class="instructions-image-container" style="text-align: center;">
+                <img src="assets/instructions.png" alt="Source Data Guide" class="instructions-image"
+                    style="width: 100%; display: inline-block;">
             </div>
-            <h3>Printing Specifications</h3>
-            <ul class="specs-list">
-                <li>Barcodes and label should be printed on <strong>paper pressure sensitive label stock</strong></li>
-                <li>Basis weight: <strong>60 GSM or higher</strong></li>
-                <li>Finish: <strong>Matte or low gloss</strong></li>
-                <li>Opacity: <strong>75%</strong></li>
-            </ul>
-            <div class="important-box">
-                <div class="box-title">📦 Homeware Division</div>
-                <p>When "H - Homeware" is selected, only then the corner box with "H" appears on the label.</p>
+
+            <div class="info-box">
+                <p><strong>Note:</strong> The highlighted areas on the example order correspond to the input
+                    fields
+                    shown on the next page.</p>
             </div>
         </section>
 
         <div class="page-footer">
             <img src="assets/allport-pacd-logo.png" alt="Allport PACD" class="footer-logo">
-            <span class="page-number">Page 2 of 3</span>
+            <span class="page-number">Page 2 of 4</span>
             <div class="footer-text">Version 1.0 | January 2026</div>
         </div>
     </div>
@@ -557,70 +603,111 @@
     <div class="a4-page" id="page3">
         <section class="section">
             <h2 class="section-title">
+                <span class="section-number">3</span>
+                Filling in the Label (Continued)
+            </h2>
+
+            <!-- Inputs Image & Analysis -->
+            <h3>2. Application Inputs</h3>
+            <div class="instructions-image-container" style="text-align: center; margin: 0.1rem 0;">
+                <img src="assets/INPUTS.png" alt="Application Input Form" class="instructions-image"
+                    style="width: 45%; display: inline-block;">
+            </div>
+
+
+        </section>
+
+
+
+        <div class="page-footer">
+            <img src="assets/allport-pacd-logo.png" alt="Allport PACD" class="footer-logo">
+            <span class="page-number">Page 3 of 4</span>
+            <div class="footer-text">Version 1.0 | January 2026</div>
+        </div>
+    </div>
+
+
+
+    <!-- PAGE 4 -->
+    <div class="a4-page" id="page4">
+        <!-- Section 4: Special Classifications -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-number">4</span>
+                Special Classifications
+            </h2>
+            <div class="important-box">
+                <div class="box-title">📦 Homeware Division</div>
+                <p>Select <strong>"H - Homeware"</strong> in the Division dropdown to display the required corner
+                    indicator.</p>
+                <img src="assets/HOMEWARE.png" alt="Homeware Label Example"
+                    style="width: 100%; max-width: 300px; border: 1px solid #f59e0b; margin-top: 10px; border-radius: 4px; display: block;">
+            </div>
+        </section>
+
+        <!-- Section 5: Final Steps -->
+        <section class="section">
+            <h2 class="section-title">
                 <span class="section-number">5</span>
-                Step-by-Step Guide
+                Final Steps
             </h2>
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-content">
-                    <h4>Open the Label Generator</h4>
-                    <p>Open the application in your web browser.</p>
+                    <h4>Review Preview</h4>
+                    <p>Check all details on the live preview before exporting.</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
                 <div class="step-content">
-                    <h4>Select Label Size</h4>
-                    <p>Choose <strong>Custom</strong> for 10-15 cm cartons or <strong>A5</strong> for all others.</p>
+                    <h4>Export PDF</h4>
+                    <p>Click the <strong>Export PDF</strong> button. The file will be named automatically.</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
                 <div class="step-content">
-                    <h4>Select Carton Type</h4>
-                    <p>Choose <strong>Ratio</strong> for mixed sizes or <strong>Single</strong> for one size only.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h4>Enter All Required Fields</h4>
-                    <p>Fill in PO Number, Style Ref, Supplier, Factory, Line Code, Pack ID, Box Qty, Division, Color,
-                        Size, and
-                        Description.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">5</div>
-                <div class="step-content">
-                    <h4>Export PDF</h4>
-                    <p>Click <strong>"Export PDF"</strong> to download. Filename:
-                        <code>[LineCode]_[PackID]_[Size].pdf</code>
+                    <h4>Print</h4>
+                    <p>Print on <strong>A4</strong> paper with scale set to <strong>"Actual Size"</strong> or
+                        <strong>100%</strong>.
                     </p>
                 </div>
             </div>
         </section>
 
+        <!-- Section 6: Printing Specs -->
         <section class="section">
             <h2 class="section-title">
                 <span class="section-number">6</span>
+                Printing Specs
+            </h2>
+            <ul class="specs-list">
+                <li><strong>Stock:</strong> Pressure sensitive label paper</li>
+                <li><strong>Weight:</strong> 60 GSM or higher</li>
+                <li><strong>Finish:</strong> Matte or low gloss</li>
+                <li><strong>Opacity:</strong> 75% minimum</li>
+            </ul>
+        </section>
+
+        <!-- Section 7: Troubleshooting -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-number">7</span>
                 Troubleshooting
             </h2>
-            <ul>
-                <li><strong>Text cut off:</strong> Add a space between the longest word. <em>(This allows the text to
-                        wrap properly.)</em></li>
-                <li><strong>Corner box not showing:</strong> This will only appear for Homeware division (H).</li>
-                <li><strong>Wrong label size:</strong> Check the size selector and verify carton height.</li>
-                <li><strong>Preview not updating:</strong> Refresh the browser page. On smaller screens, the preview
-                    might not be fully accurate—the exported PDF will be accurate.</li>
-                <li><strong>Size reduced after print:</strong> Print on A4 page. Set Scale to <strong>"Actual
-                        Size"</strong>.</li>
+            <ul class="specs-list" style="list-style-type: disc; padding-left: 1.5rem;">
+                <li><strong>Text cut off:</strong> Add a space between words to allow wrapping.</li>
+                <li><strong>Corner box missing:</strong> "H" box only for Homeware.</li>
+                <li><strong>Wrong label size:</strong> Verify carton height.</li>
+                <li><strong>Preview issues:</strong> Exported PDF is correct even if mobile preview is off.</li>
+                <li><strong>Size too small:</strong> Ensure "Actual Size" print scale.</li>
             </ul>
         </section>
 
         <div class="page-footer">
             <img src="assets/allport-pacd-logo.png" alt="Allport PACD" class="footer-logo">
-            <span class="page-number">Page 3 of 3</span>
+            <span class="page-number">Page 4 of 4</span>
             <div class="footer-text">© 2026 Allport PACD</div>
         </div>
     </div>
@@ -675,6 +762,19 @@
                     height: page3.offsetHeight
                 });
                 pdf.addImage(canvas3.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 210, 297);
+
+                // Page 4
+                pdf.addPage();
+                const page4 = document.getElementById('page4');
+                const canvas4 = await html2canvas(page4, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff',
+                    width: page4.offsetWidth,
+                    height: page4.offsetHeight
+                });
+                pdf.addImage(canvas4.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 210, 297);
 
                 pdf.save('instruction.pdf');
 

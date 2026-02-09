@@ -74,13 +74,25 @@ body {
 }
 
 .logo-img {
-    height: 40px;
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-right {
+    height: 28px;
     width: auto;
     object-fit: contain;
 }
 
 .navbar h1 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: -0.01em;
     color: var(--primary);
@@ -99,6 +111,7 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     box-shadow: var(--shadow-sm);
+    text-decoration: none;
 }
 
 .nav-icon-btn:hover {
@@ -745,11 +758,32 @@ body {
 
 @media (max-width: 600px) {
     .navbar {
-        padding: 0 1rem;
+        padding: 0 0.75rem;
+        height: 60px;
     }
 
     .navbar h1 {
-        font-size: 1rem;
+        font-size: 0.875rem;
+        margin-left: 0.25rem;
+    }
+
+    .logo-img {
+        height: 32px;
+        width: auto;
+    }
+
+    .logo-right {
+        height: 20px;
+        width: auto;
+    }
+
+    .nav-icon-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .nav-icon-btn span {
+        display: none;
     }
 
     .sidebar {

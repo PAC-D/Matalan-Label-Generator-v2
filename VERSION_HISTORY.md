@@ -1,6 +1,28 @@
 # Version History
 
-## v2.1 (Current Release)
+## v2.2 (Documentation & Branding Update)
+**Release Date:** February 10, 2026
+
+### � Branding Update
+- **Name Change:** Updated application title to **"Matalan Shipping Label Generator"** across the interface and manual.
+- **Enhanced Header:** Increased manual header logo size (60px) and added a white background for improved brand visibility on dark themes.
+
+### 📚 Documentation (Instruction Manual)
+- **Comprehensive Refactor:**
+  - Expanded and restructured the manual into a clear **4-page** format to resolve overflow issues while maintaining a compact footprint.
+- **New Page Structure:**
+  - **Page 1:** Label Size Selection & Carton Type Options.
+  - **Page 2:** Mapping Source Data (Part 1).
+  - **Page 3:** Application Inputs (Part 2) with optimized image sizing (45%).
+  - **Page 4:** Consolidated reference section including Special Classifications (Homeware), Final Steps, Printing Specs, and Troubleshooting.
+- **Visual & Functional Updates:**
+  - Updated guide images for clarity.
+  - Refined layout to ensure all critical information fits perfectly on standard A4 paper.
+  - **Export Logic:** Updated the PDF generation engine to robustly support the new multi-page structure.
+
+---
+
+## v2.1 (Previous Release)
 **Release Date:** February 07, 2026
 
 ### 🚀 New Features

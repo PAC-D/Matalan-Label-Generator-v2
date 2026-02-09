@@ -8,11 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const template = document.getElementById('labelTemplate');
     const downloadBtn = document.getElementById('downloadBtn');
 
-    // Modal Elements
-    const instructionBtn = document.getElementById('instructionBtn');
-    const instructionModal = document.getElementById('instructionModal');
-    const closeModalBtn = document.querySelector('.close-modal');
-    const modalOverlay = document.querySelector('.modal-overlay');
+    // Modal Elements (Removed as Instruction Manual is now a separate page)
+    // const instructionModal = document.getElementById('instructionModal');
+    // const closeModalBtn = document.querySelector('.close-modal');
+    // const modalOverlay = document.querySelector('.modal-overlay');
 
     // State
     let currentZoom = 1;
@@ -44,19 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Modal Listeners
-    if (instructionBtn) {
-        instructionBtn.addEventListener('click', () => {
-            instructionModal.classList.remove('hidden');
-        });
-    }
-
-    const closeModal = () => {
-        instructionModal.classList.add('hidden');
-    };
-
-    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+    // Modal Listeners Removed
 
     // Zoom
     document.getElementById('zoomIn').onclick = () => setZoom(currentZoom + 0.1);
