@@ -821,7 +821,7 @@ body {
 /* Sidebar Size Grid */
 .size-inputs-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 0.75rem;
 }
 
@@ -889,6 +889,12 @@ body {
 
 .total-cell {
     font-weight: 900;
+}
+
+/* Separator between 2 row groups in A5 mode */
+.size-row-separator td,
+.size-row-separator th {
+    border-top: 2px solid #0f172a;
 }
 
 /* Specific Tweak for Homeware Condition */
@@ -1009,6 +1015,7 @@ body {
     outline: none;
     /* Remove standard input styles */
     -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .size-qty-input::-webkit-outer-spin-button,

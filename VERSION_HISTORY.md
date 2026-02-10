@@ -1,5 +1,31 @@
 # Version History
 
+## v2.3 (Size Layout Expansion)
+**Release Date:** February 10, 2026
+
+### 🚀 New Features
+- **Expanded Size Inputs (12 Slots):**
+  - Increased from 7 to **12 size input slots** in the configuration sidebar.
+  - First 7 slots pre-filled with standard sizes (XS, S, M, L, XL, XXL, 3XL); remaining 5 are blank for custom sizes.
+  - Sidebar inputs arranged in a **2 rows of 6** grid layout.
+
+- **A5 Two-Row Size Table:**
+  - When **A5** dimension is selected, the label's size table displays sizes in **2 rows of 6 columns** with a clear border separator between rows.
+  - Provides a cleaner, more compact layout for labels with many sizes.
+
+- **Total Column Removed:**
+  - The "Total" column has been **removed** from both A5 and Custom label outputs for a cleaner appearance.
+
+### 🐛 Bug Fixes
+- **Blank Preview Fix:** Resolved a critical issue where the label preview was blank due to a **duplicate HTML ID collision** between size header inputs (`label1`–`label12`) and label container elements (`label1`, `label2`). Renamed inputs to `sizeLabel1`–`sizeLabel12`.
+- **Duplicate `</main>` Tag:** Removed a stray duplicate closing `</main>` tag in `index.html`.
+
+### 📚 Documentation
+- Updated instruction manual to document the new 12-slot layout and A5 two-row display.
+- Bumped manual version to **1.1 | February 2026**.
+
+---
+
 ## v2.2 (Documentation & Branding Update)
 **Release Date:** February 10, 2026
 

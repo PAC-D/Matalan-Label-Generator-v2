@@ -8,11 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const template = document.getElementById('labelTemplate');
     const downloadBtn = document.getElementById('downloadBtn');
 
-    // Modal Elements (Removed as Instruction Manual is now a separate page)
-    // const instructionModal = document.getElementById('instructionModal');
-    // const closeModalBtn = document.querySelector('.close-modal');
-    // const modalOverlay = document.querySelector('.modal-overlay');
-
     // State
     let currentZoom = 1;
 
@@ -39,11 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 singleSizeContainer.classList.add('hidden');
                 sizeInputsGrid.classList.remove('hidden');
             }
-            updateLabels(); // Re-render on change
+            updateLabels();
         });
     }
-
-    // Modal Listeners Removed
 
     // Zoom
     document.getElementById('zoomIn').onclick = () => setZoom(currentZoom + 0.1);
@@ -58,9 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLayout() {
         const size = sizeSelector.value;
         printArea.setAttribute('data-size', size);
-
-        // Adjust CSS vars or classes if needed
-        // The CSS handles [data-size="a5"] vs [data-size="custom"]
     }
 
     // Initial call to set layout attribute
@@ -78,40 +68,33 @@ document.addEventListener('DOMContentLoaded', () => {
             boxQty: document.getElementById('boxQty').value,
             description: document.getElementById('description').value,
             color: document.getElementById('color').value,
-            // Division only for logic
             division: document.getElementById('division').value,
             cartonType: document.getElementById('cartonType') ? document.getElementById('cartonType').value : 'ratio',
             singleSizeValue: document.getElementById('singleSizeValue') ? document.getElementById('singleSizeValue').value : '',
         };
 
-        // Gather Active Sizes and Calculate Total
-        const sizeKeys = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+        // Gather Active Sizes from 12 slots
         const activeSizes = [];
         let totalSize = 0;
         let hasSize = false;
 
-        sizeKeys.forEach(key => {
-            // value
-            const valInput = document.getElementById(`size${key}`);
-            const labelInput = document.getElementById(`label${key}`);
+        for (let i = 1; i <= 12; i++) {
+            const valInput = document.getElementById(`size${i}`);
+            const labelInput = document.getElementById(`sizeLabel${i}`);
 
             const val = valInput ? valInput.value : '';
-            const header = (labelInput && labelInput.value) ? labelInput.value : key;
+            const header = (labelInput && labelInput.value) ? labelInput.value : '';
 
-            // Include if quantity is NOT empty
             if (val !== '') {
                 activeSizes.push({ header: header, value: val });
                 totalSize += (parseInt(val) || 0);
                 hasSize = true;
             }
-
-            // Still populate legacy data keys just in case, though usually unused with dynamic render
-            data[`size${key}`] = val !== '' ? val : '-';
-            data[`header${key}`] = header;
-        });
+        }
 
         data.activeSizes = activeSizes;
         data.sizeTotal = hasSize ? totalSize : '-';
+        data.sizeMode = sizeSelector.value;
 
         // Render both labels
         renderLabel(label1, data);
@@ -125,7 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Populate basic fields
         Object.keys(data).forEach(key => {
             const el = clone.querySelector(`[data-key="${key}"]`);
-            if (el && key !== 'cornerBox' && key !== 'division' && key !== 'singleSizeDisplay' && key !== 'sizeTableContainer') el.textContent = data[key];
+            if (el && key !== 'cornerBox' && key !== 'division' && key !== 'singleSizeDisplay' && key !== 'sizeTableContainer') {
+                el.textContent = data[key];
+            }
         });
 
         // Size Display Logic (Carton Type)
@@ -147,30 +132,55 @@ document.addEventListener('DOMContentLoaded', () => {
             const tableHead = clone.querySelector('.size-table thead tr');
             const tableBody = clone.querySelector('.size-table tbody tr');
 
-            if (tableHead && tableBody && data.activeSizes) {
+            if (tableHead && tableBody) {
                 tableHead.innerHTML = '';
                 tableBody.innerHTML = '';
 
                 if (data.activeSizes.length > 0) {
-                    data.activeSizes.forEach(size => {
-                        const th = document.createElement('th');
-                        th.textContent = size.header;
-                        tableHead.appendChild(th);
+                    const isA5 = data.sizeMode === 'a5';
 
-                        const td = document.createElement('td');
-                        td.textContent = size.value;
-                        tableBody.appendChild(td);
-                    });
+                    if (isA5) {
+                        // A5: 2 rows of 6, no Total column
+                        // We need to replace the single thead/tbody structure with multiple row pairs
+                        const table = clone.querySelector('.size-table');
+                        table.innerHTML = '';
 
-                    // Add Total Column
-                    const thTot = document.createElement('th');
-                    thTot.textContent = 'Total';
-                    tableHead.appendChild(thTot);
+                        for (let i = 0; i < data.activeSizes.length; i += 6) {
+                            const chunk = data.activeSizes.slice(i, i + 6);
 
-                    const tdTot = document.createElement('td');
-                    tdTot.textContent = data.sizeTotal;
-                    tdTot.classList.add('total-cell');
-                    tableBody.appendChild(tdTot);
+                            const trHead = document.createElement('tr');
+                            const trBody = document.createElement('tr');
+
+                            chunk.forEach(size => {
+                                const th = document.createElement('th');
+                                th.textContent = size.header;
+                                trHead.appendChild(th);
+
+                                const td = document.createElement('td');
+                                td.textContent = size.value;
+                                trBody.appendChild(td);
+                            });
+
+                            // Add separator class for 2nd+ row group
+                            if (i > 0) {
+                                trHead.classList.add('size-row-separator');
+                            }
+
+                            table.appendChild(trHead);
+                            table.appendChild(trBody);
+                        }
+                    } else {
+                        // Custom: single row, no Total
+                        data.activeSizes.forEach(size => {
+                            const th = document.createElement('th');
+                            th.textContent = size.header;
+                            tableHead.appendChild(th);
+
+                            const td = document.createElement('td');
+                            td.textContent = size.value;
+                            tableBody.appendChild(td);
+                        });
+                    }
                 } else {
                     // Placeholder if no sizes active
                     const th = document.createElement('th');
@@ -189,8 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const labelContent = clone.querySelector('.label-content');
 
         if (cornerBox) {
-            // Rules: Only show if "H - Homeware" is selected.
-            // Strict condition as per user request: "if select h only then the corner box will show"
             if (data.division && data.division.startsWith('H')) {
                 cornerBox.textContent = 'H';
                 cornerBox.classList.remove('hidden');
@@ -212,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
         container.classList.remove('tight-padding');
 
         const resizableKeys = ['supplierName', 'factoryName', 'description'];
-        let hasOverflow = false;
 
         resizableKeys.forEach(key => {
             const el = container.querySelector(`[data-key="${key}"]`);
@@ -232,50 +239,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Check if the overall content overflows the container
         const labelContent = container.querySelector('.label-content');
-        if (labelContent.scrollHeight > container.clientHeight) {
+        if (labelContent && labelContent.scrollHeight > container.clientHeight) {
             container.classList.add('tight-padding');
         }
     }
 
     function downloadPDF() {
-        // Use html2pdf for "what you see is what you get"
         const element = printArea;
         const sizeValue = sizeSelector.value;
         const isLandscape = sizeValue === 'custom';
 
-        // Filename construction: lineCode_packId_dimension
-        // Dimension mapping: a5 -> A5, custom -> Custom
         const lineCode = document.getElementById('lineCode').value || 'Unspecified';
         const packId = document.getElementById('packId').value || 'Unspecified';
         const dimStr = sizeValue === 'a5' ? 'A5' : '25x10cm';
 
-        // Clean filename of illegal chars just in case
         const safeFilename = `${lineCode}_${packId}_${dimStr}.pdf`.replace(/[^a-z0-9_\-\.]/gi, '_');
 
         // Show loading state
         const originalText = downloadBtn.innerHTML;
         downloadBtn.innerHTML = '<i data-lucide="loader-2" class="spin"></i> Generating...';
 
-        // CLONE STRATEGY: Create a clean copy for PDF generation to avoid screen-specific scaling/responsive issues
+        // CLONE STRATEGY
         const clone = element.cloneNode(true);
-
-        // Reset transform and ensure exact dimensions on the clone
         clone.style.transform = 'none';
         clone.style.margin = '0';
-        clone.style.boxShadow = 'none'; // Remove shadow for print
+        clone.style.boxShadow = 'none';
 
-        // Force the clone into a container that matches simple A4/Custom dimensions context
         const container = document.createElement('div');
         container.style.position = 'absolute';
         container.style.top = '-9999px';
         container.style.left = '-9999px';
         container.style.width = isLandscape ? '297mm' : '210mm';
-        container.style.height = isLandscape ? '210mm' : '297mm'; // Strict height
-        container.style.overflow = 'hidden'; // Clip any potential overflow
+        container.style.height = isLandscape ? '210mm' : '297mm';
+        container.style.overflow = 'hidden';
         container.appendChild(clone);
         document.body.appendChild(container);
 
-        // Configure options for A4 exact export
         const opt = {
             margin: 0,
             filename: safeFilename,
@@ -289,21 +288,15 @@ document.addEventListener('DOMContentLoaded', () => {
             jsPDF: { unit: 'mm', format: 'a4', orientation: isLandscape ? 'landscape' : 'portrait' }
         };
 
-        // Execution chain: Generate -> Get PDF -> Filter Pages -> Save
         html2pdf().set(opt).from(clone).toPdf().get('pdf').then(function (pdf) {
-            // Logic to remove extra pages if they were created due to sub-pixel overflow
             const totalPages = pdf.internal.getNumberOfPages();
             if (totalPages > 1) {
-                // Delete all pages starting from the last one (backwards) until only 1 remains
                 for (let i = totalPages; i > 1; i--) {
                     pdf.deletePage(i);
                 }
             }
         }).save().then(() => {
-            // Cleanup
             if (document.body.contains(container)) document.body.removeChild(container);
-
-            // Restore UI
             downloadBtn.innerHTML = originalText;
             lucide.createIcons();
         }).catch(err => {
