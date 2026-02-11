@@ -1,5 +1,16 @@
 # Version History
 
+## v2.4 (Default Size Update)
+**Release Date:** February 11, 2026
+
+### 🚀 New Features
+- **Updated Default Size Layout:**
+  - Redefined the default values for the 12 size slots to include smaller and larger sizes.
+  - **New Order:** XXXS, XXS, XS, S, M, L, XL, XXL, 3XL, 4XL, 5XL, 6XL.
+  - Ensures immediate support for a wider range of sizes without manual entry.
+
+---
+
 ## v2.3 (Size Layout Expansion)
 **Release Date:** February 10, 2026
 
@@ -29,7 +40,7 @@
 ## v2.2 (Documentation & Branding Update)
 **Release Date:** February 10, 2026
 
-### � Branding Update
+### 🎨 Branding Update
 - **Name Change:** Updated application title to **"Matalan Shipping Label Generator"** across the interface and manual.
 - **Enhanced Header:** Increased manual header logo size (60px) and added a white background for improved brand visibility on dark themes.
 
